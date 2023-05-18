@@ -7,12 +7,19 @@ const connection = async () => {
     password: process.env.DB_PASSWORD,
     connectString: process.env.DB_URL,
   });
-
   const result = await connectionDb.execute(
-    'SELECT * FROM INFOMED.INF_BENEFICIARIOS where rownum <= 2',
+    `SELECT * FROM INFOMED.HG_VM_CREDENCIAMENTO t 
+     where t.status='ATIVO' 
+     and rownum <= 10
+     and lower(t.nome) like '%alberto%'
+    `,
     [],
     { outFormat: oracledb.OUT_FORMAT_OBJECT },
   );
-  console.log(result);
+  return connectionDb;
+  
 };
+
 connection();
+
+module.exports = connection;

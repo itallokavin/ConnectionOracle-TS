@@ -7,18 +7,21 @@
     "dev": "ts-node-dev -r tsconfig-paths/register --poll --respawn --inspect --transpile-only --trace-warnings --ignore-watch node_modules src/index.ts",
     "oracle": "node src/oracle-test.js",
     "build": "npx tsc",
-    "start": "node ./dist/index.js"
+    "start": "nodemon src/api.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/oracledb": "^5.2.4",
+    "nodemon": "^2.0.22",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "oracledb": "^5.5.0"
   }
 }
